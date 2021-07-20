@@ -1,0 +1,98 @@
+{
+  "status": { "code": 0, "name": "ok", "message": "done" },
+  "results": [
+    {
+      "name": "addr",
+      "code": { "id": "4719025334", "type": "L", "mappingId": "0419025334" },
+      "region": {
+        "area0": {
+          "name": "kr",
+          "coords": { "center": { "crs": "", "x": 0.0, "y": 0.0 } }
+        },
+        "area1": {
+          "name": "경상북도",
+          "coords": {
+            "center": { "crs": "EPSG:4326", "x": 128.962578, "y": 36.6308397 }
+          },
+          "alias": "경북"
+        },
+        "area2": {
+          "name": "구미시",
+          "coords": {
+            "center": { "crs": "EPSG:4326", "x": 128.3443, "y": 36.1195987 }
+          }
+        },
+        "area3": {
+          "name": "고아읍",
+          "coords": {
+            "center": { "crs": "EPSG:4326", "x": 128.3283922, "y": 36.2109468 }
+          }
+        },
+        "area4": {
+          "name": "괴평리",
+          "coords": {
+            "center": { "crs": "EPSG:4326", "x": 128.3793, "y": 36.1593 }
+          }
+        }
+      },
+      "land": {
+        "type": "1",
+        "number1": "1112",
+        "number2": "714",
+        "addition0": { "type": "", "value": "" },
+        "addition1": { "type": "", "value": "" },
+        "addition2": { "type": "", "value": "" },
+        "addition3": { "type": "", "value": "" },
+        "addition4": { "type": "", "value": "" },
+        "coords": { "center": { "crs": "", "x": 0.0, "y": 0.0 } }
+      }
+    },
+    {
+      "name": "roadaddr",
+      "code": { "id": "4719025334", "type": "L", "mappingId": "0419025334" },
+      "region": {
+        "area0": {
+          "name": "kr",
+          "coords": { "center": { "crs": "", "x": 0.0, "y": 0.0 } }
+        },
+        "area1": {
+          "name": "경상북도",
+          "coords": {
+            "center": { "crs": "EPSG:4326", "x": 128.962578, "y": 36.6308397 }
+          },
+          "alias": "경북"
+        },
+        "area2": {
+          "name": "구미시",
+          "coords": {
+            "center": { "crs": "EPSG:4326", "x": 128.3443, "y": 36.1195987 }
+          }
+        },
+        "area3": {
+          "name": "고아읍",
+          "coords": {
+            "center": { "crs": "EPSG:4326", "x": 128.3283922, "y": 36.2109468 }
+          }
+        },
+        "area4": {
+          "name": "괴평리",
+          "coords": {
+            "center": { "crs": "EPSG:4326", "x": 128.3793, "y": 36.1593 }
+          }
+        }
+      },
+      "land": {
+        "type": "",
+        "number1": "196",
+        "number2": "3",
+        "addition0": { "type": "building", "value": "" },
+        "addition1": { "type": "zipcode", "value": "39153" },
+        "addition2": { "type": "roadGroupCode", "value": "471904724185" },
+        "addition3": { "type": "", "value": "" },
+        "addition4": { "type": "", "value": "" },
+        "name": "대평길",
+        "coords": { "center": { "crs": "", "x": 0.0, "y": 0.0 } }
+      }
+    }
+  ]
+}

@@ -269,6 +269,8 @@ class LandListItem:
         self.articleNo = ''
         self.articleName = ''
         self.articleConfirmYmd = ''
+        self.latitude = ''
+        self.longitude = ''
 
 class LandListCrawler:
 
@@ -333,6 +335,8 @@ class LandListCrawler:
                     list_item.articleNo = item["articleNo"]
                     list_item.articleName = item['articleName']
                     list_item.articleConfirmYmd = item['articleConfirmYmd']
+                    list_item.latitude = item['latitude']
+                    list_item.longitude = item['longitude']
 
                     # 진행률 표시
                     print(f'{list_item.articleNo} : ', end='')

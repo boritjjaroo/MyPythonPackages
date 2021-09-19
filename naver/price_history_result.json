@@ -1,0 +1,11 @@
+{
+    "tradeType":"A1",
+    "initialPrice":"5억 2,000",
+    "priceHistoryList":[
+        {
+            "modificationYearMonthDay":"20210916",
+            "priceState":"DECREASE",
+            "priceGap":4000
+        }
+    ]
+}

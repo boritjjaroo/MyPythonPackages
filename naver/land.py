@@ -112,6 +112,9 @@ pc_list_param = {
 # https://new.land.naver.com/api/articles/2114363364
 pc_detail_url = 'https://new.land.naver.com/api/articles/'
 
+# https://new.land.naver.com/api/article-price-history/2122684815
+pc_price_history_url = 'https://new.land.naver.com/api/article-price-history/'
+
 class LandItem:
 
     def __init__(self):
@@ -135,6 +138,8 @@ class LandItem:
         self.area = 0
         self.building_area = 0
         self.total_floor_area = 0
+
+        self.initial_price = ''
 
         self.is_new = False
         self.is_favorite = False
@@ -198,6 +203,20 @@ class LandItem:
                 self.address = address_dic.values()[0]
             self.is_location_address = True
 
+    def getPriceHistory(self):
+        url = f'{pc_price_history_url}{self.id}'
+        response = requests.get(url, headers=header)
+
+        if response.status_code != 200 :
+            print(f'Http error : {response.status_code}')
+            return
+
+        #response 데이터 확인
+        #print(response.content)
+
+        json_object = json.loads(response.content)
+
+        self.initial_price = json_object.get('initialPrice', '')
 
     def parseFromID(self, id_str):
         url = f'{pc_detail_url}{id_str}'

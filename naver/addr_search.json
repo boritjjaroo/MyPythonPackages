@@ -1,0 +1,86 @@
+{
+  "result": {
+    "type": "address",
+    "metaInfo": {
+      "pageId": "0c30e633-4064-4800-8d8a-a7c36b41bd51",
+      "sessionId": null,
+      "rcode": null,
+      "searchedQuery": "경상남도 양산시 동면 금산리 1434-12번지",
+      "correction": null,
+      "displayCorrectAnswer": true
+    },
+    "address": {
+      "subType": "jibun-address",
+      "roadAddress": null,
+      "jibunsAddress": {
+        "page": 1,
+        "totalCount": 1,
+        "list": [
+          {
+            "index": "0",
+            "rank": "1",
+            "id": "0333031027",
+            "name": "경상남도 양산시 동면 금산리 1434-12(금오5길 76-15)",
+            "fullAddress": "경상남도 양산시 동면 금산리 1434-12",
+            "englishAddress": "76-15, Geumo 5-gil, Dong-myeon, Yangsan-si, Gyeongsangnam-do, Republic of Korea",
+            "addressElements": {
+              "sido": "경상남도",
+              "sigugun": "양산시",
+              "dongmyun": "동면",
+              "ri": "금산리",
+              "roadName": "금오5길",
+              "buildNumber": "76-15",
+              "jibun": "1434-12",
+              "buildName": "",
+              "roadGroupId": null,
+              "zipcode": "50639",
+              "bcode": "4833031027",
+              "hcode": ""
+            },
+            "shortAddress": ["경남 양산시", "금산리 1434-12"],
+            "siteSearchQuery": null,
+            "display": "경상남도 양산시 동면 <em><strong>금산리 1434-12</strong></em>",
+            "siteCount": "0",
+            "siteRepName": null,
+            "distance": null,
+            "rCode": "0333031027",
+            "itemLevel": "12",
+            "isJibunAddress": true,
+            "boundary": null,
+            "mappedAddress": {
+              "name": "경상남도 양산시 동면 금오5길 76-15(금산리 1434-12)",
+              "fullAddress": "경상남도 양산시 동면 금오5길 76-15",
+              "shortAddress": ["경남 양산시", "금오5길 76-15"],
+              "abbrAddress": "금오5길 76-15",
+              "id": "0333031027",
+              "rCode": "0333031027",
+              "itemLevel": "12",
+              "siteCount": "0",
+              "zipcode": "50639",
+              "roadGroupId": "483304814092",
+              "siteSearchQuery": null,
+              "mappedAddressList": null,
+              "x": "129.0215175",
+              "y": "35.3118851",
+              "isJibunAddress": false,
+              "isNewAddress": true,
+              "mappedAddr": "1;0333031027;709197"
+            },
+            "zipcode": null,
+            "buildName": "",
+            "roadGroupId": null,
+            "relatedRegionAddressList": null,
+            "favoriteList": null,
+            "x": "129.0215599",
+            "y": "35.3119079",
+            "isNewAddress": false,
+            "streetPanorama": null,
+            "skyPanorama": null
+          }
+        ]
+      }
+    },
+    "place": null,
+    "bus": null
+  }
+}

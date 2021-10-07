@@ -138,13 +138,10 @@ class LandItem:
         self.area = 0
         self.building_area = 0
         self.total_floor_area = 0
+        self.structure = ''
+        self.heating = ''
 
         self.initial_price = ''
-
-        self.is_new = False
-        self.is_favorite = False
-        self.is_multi_family = None
-        self.build_years = None
 
     @staticmethod
     def getJsonFileNameS(article_no, article_confirm_ymd):
@@ -175,6 +172,7 @@ class LandItem:
 
         if json_object.get('articleFacility') is not None:
             self.use_approve_day2 = json_object['articleFacility'].get('buildingUseAprvYmd')
+            self.heating = json_object['articleFacility'].get('heatFuelTypeName', '')
 
         if json_object.get('articleBuildingRegister') is not None:
             self.use_approve_day = json_object['articleBuildingRegister'].get('useAprDay')
@@ -187,6 +185,7 @@ class LandItem:
             self.area = json_object['articleBuildingRegister'].get('platArea')
             self.building_area = json_object['articleBuildingRegister'].get('archArea')
             self.total_floor_area = json_object['articleBuildingRegister'].get('totArea')
+            self.structure = json_object['articleBuildingRegister'].get('strctCdNm', '')
         elif json_object.get('articleSpace') is not None:
             self.area = json_object['articleSpace'].get('groundSpace')
 
@@ -252,7 +251,7 @@ class LandItem:
             print(f'{file_path} saved.')
         return
 
-    def calcBuildYears(self):
+    def getUseApproveDate(self):
         time_build = None
         # 부동산 입력 정보 우선 적용
         if self.use_approve_day2:
@@ -274,10 +273,16 @@ class LandItem:
             elif len(numbers) == 3:
                 time_build = datetime(int(numbers[0]), int(numbers[1]), int(numbers[2]))
 
+        return time_build
+
+    def calcBuildYears(self):
+        build_years = 0
+        time_build = self.getUseApproveDate()
+
         if time_build:
-            self.build_years = round((datetime.now() - time_build).days / 365, 1)
-        else:
-            self.build_years = None
+            build_years = round((datetime.now() - time_build).days / 365, 1)
+
+        return build_years
 
     def prettyPrint(self):
         print(f'{self.id}  {self.name}  {self.price}  {self.use_approve_day}   {self.address}')

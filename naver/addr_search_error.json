@@ -1,0 +1,68 @@
+{
+  "result": {
+    "type": "address",
+    "metaInfo": {
+      "pageId": "e4f6fb95-f191-4349-898e-69606fda2280",
+      "sessionId": null,
+      "rcode": null,
+      "searchedQuery": "경상남도 양산시 물금읍 물금리 434번지",
+      "correction": null,
+      "displayCorrectAnswer": true
+    },
+    "address": {
+      "subType": "jibun-address",
+      "roadAddress": null,
+      "jibunsAddress": {
+        "page": 1,
+        "totalCount": 1,
+        "list": [
+          {
+            "index": "0",
+            "rank": "1",
+            "id": "0333025321",
+            "name": "경상남도 양산시 물금읍 물금리 434",
+            "fullAddress": "경상남도 양산시 물금읍 물금리 434",
+            "englishAddress": "434, Mulgeum-ri, Mulgeum-eup, Yangsan-si, Gyeongsangnam-do, Republic of Korea",
+            "addressElements": {
+              "sido": "경상남도",
+              "sigugun": "양산시",
+              "dongmyun": "물금읍",
+              "ri": "물금리",
+              "roadName": null,
+              "buildNumber": null,
+              "jibun": "434",
+              "buildName": null,
+              "roadGroupId": null,
+              "zipcode": null,
+              "bcode": "4833025321",
+              "hcode": ""
+            },
+            "shortAddress": ["경남 양산시", "물금리 434"],
+            "siteSearchQuery": null,
+            "display": "경상남도 양산시 물금읍 <em><strong>물금리 434</strong></em>",
+            "siteCount": "0",
+            "siteRepName": null,
+            "distance": null,
+            "rCode": "0333025321",
+            "itemLevel": "12",
+            "isJibunAddress": true,
+            "boundary": null,
+            "mappedAddress": null,
+            "zipcode": null,
+            "buildName": null,
+            "roadGroupId": null,
+            "relatedRegionAddressList": null,
+            "favoriteList": null,
+            "x": "128.9848810",
+            "y": "35.3113037",
+            "isNewAddress": false,
+            "streetPanorama": null,
+            "skyPanorama": null
+          }
+        ]
+      }
+    },
+    "place": null,
+    "bus": null
+  }
+}

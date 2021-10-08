@@ -112,6 +112,7 @@ header = {
 class AddressInfo:
     def __init__(self):
         self.address_road = ''
+        self.lawd_cd = ''
 
     def __str__(self) -> str:
         return str(self.address_road)
@@ -128,11 +129,14 @@ def addr_search(search_address):
     #print(response.content)
 
     json_data = json.loads(response.content)
-    #print(json_data)
+    #print(json.dumps(json_data, indent=4, ensure_ascii=False))
 
     info = AddressInfo()
+
     address_list = json_data['result']['address']['jibunsAddress']['list']
-    info.address_road = address_list[0]['mappedAddress']['fullAddress']
+    if address_list[0].get('mappedAddress'):
+        info.address_road = address_list[0]['mappedAddress']['fullAddress']
+    info.lawd_cd = address_list[0]['addressElements']['bcode']
 
     return info
 
@@ -169,6 +173,6 @@ def ip_to_addr(ip_str):
 
 
 if __name__ == "__main__":
-    print(addr_search('경상남도 양산시 동면 금산리 1424-11번지'))
+    print(addr_search('경상남도 양산시 물금읍 물금리 434번지'))
     print(coords_to_addr('128.3660622', '36.1432817'))
     print(ip_to_addr('211.213.235.44'))

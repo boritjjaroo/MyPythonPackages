@@ -63,6 +63,7 @@ class RealSalePriceInfo:
         # "DPOS_GBN": "2",
         # "DNAME": "고아읍",
         # 법정동 코드 "LAWD_CD": "4719025332",
+        self.lawd_cd = ''
         # 법정동 "NAME": "문성리",
         self.location = ''
         # 명칭? "UMD_NM": "문성리"
@@ -119,13 +120,14 @@ class RealSalePriceInfo:
     def parseFromJson(self, jsonObject):
         self.deal_month = int(jsonObject.get('DEAL_MM', 0))
         self.deal_day = jsonObject.get('DEAL_DD', 0)
+        self.lawd_cd = jsonObject.get('LAWD_CD', '')
         self.location = jsonObject.get('NAME', '')
         self.road_name = jsonObject.get('ROAD_NAME', '')
         self.address = jsonObject.get('BUNJI', '')
         if jsonObject.get('SUM_AMT') is not None:
-            self.amount = int(jsonObject['SUM_AMT'].replace(',',''))
+            self.amount = int(jsonObject['SUM_AMT'].replace(',','')) * 10000
         elif jsonObject.get('OBJ_AMT') is not None:
-            self.amount = int(jsonObject['OBJ_AMT'].replace(',',''))
+            self.amount = int(jsonObject['OBJ_AMT'].replace(',','')) * 10000
         else:
             self.amount = 0
         if jsonObject.get('TOT_AREA') is not None:

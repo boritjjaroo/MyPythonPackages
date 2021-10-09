@@ -113,6 +113,7 @@ class AddressInfo:
     def __init__(self):
         self.address_road = ''
         self.lawd_cd = ''
+        self.jibun = ''
 
     def __str__(self) -> str:
         return str(self.address_road)
@@ -137,6 +138,7 @@ def addr_search(search_address):
     if address_list[0].get('mappedAddress'):
         info.address_road = address_list[0]['mappedAddress']['fullAddress']
     info.lawd_cd = address_list[0]['addressElements']['bcode']
+    info.jibun = address_list[0]['addressElements']['jibun']
 
     return info
 

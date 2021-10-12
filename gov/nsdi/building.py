@@ -1,3 +1,4 @@
+import json
 from gov.nsdi.base import Nsdi
 
 # 국가공간정보포털(openapi.nsdi.go.kr)
@@ -57,8 +58,8 @@ class BuildingInfo(Nsdi):
             building.bonbun = int(jibun[0])
             if 1 < len(jibun):
                 building.bubun = int(jibun[1])
-            building.plot_area = float(item.get('buldPlotAr', 0))
-            building.building_total_area = float(item.get('buldTotar',  0))
+            building.plot_area = float(Nsdi.json_get(item, 'buldPlotAr', 0))
+            building.building_total_area = float(Nsdi.json_get(item, 'buldTotar',  0))
             building.main_purpose_cd = item.get('mainPrposCode', '')
             building.main_purpose = item.get('mainPrposCodeNm', '')
             building.detail_purpose_cd = item.get('detailPrposCode', '')
@@ -72,4 +73,4 @@ class BuildingInfo(Nsdi):
 
 if __name__ == "__main__":
     print(BuildingInfo.search('4833025324', 0, 508, 14))
-    print(len(BuildingInfo.search('4833025324', 0, '2***', '')))
+    print(len(BuildingInfo.search('4785025324', 0, '1***', '')))

@@ -9,6 +9,13 @@ class Nsdi:
         return str
 
     @staticmethod
+    def json_get(json_object, key, default):
+        val = json_object.get(key)
+        if not val:
+            val = default
+        return val
+
+    @staticmethod
     def pnu(lawd_cd, is_san, bonbun, bubun):
         if is_san:
             is_san_cd = 2

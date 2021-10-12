@@ -53,7 +53,7 @@ class Nsdi:
             # cookie를 이용해 인증키 우회
             #'authkey': '',
             'format': 'json',
-            'numOfRows': '100',
+            'numOfRows': '1000',
             'pageNo': '1',
         }
             # pnu : 법정동코드(10) + 일반/산(1) + 본번(4) + 부번(4)

@@ -6,11 +6,17 @@ from gov.nsdi.base import Nsdi
 class BuildingInfo(Nsdi):
 
     def __init__(self):
+        self.lawd_cd = ''
+        self.jibun = ''
+        self.bonbun = 0
+        self.bubun = 0
         self.plot_area = 0.0
         self.building_area = 0.0
         self.building_total_area = 0.0
         self.structure = ''
+        self.main_purpose_cd = ''
         self.main_purpose = ''
+        self.detail_purpose_cd = ''
         self.detail_purpose = ''
         self.building_purpose = ''
         self.height = 0.0
@@ -22,7 +28,7 @@ class BuildingInfo(Nsdi):
         self.update_date = ''
 
     def __repr__(self):
-        str = f'대지:{self.plot_area}'
+        str = f'{self.jibun} 대지:{self.plot_area}'
         return str
 
     @staticmethod
@@ -45,7 +51,20 @@ class BuildingInfo(Nsdi):
 
         for item in list:
             building = BuildingInfo()
-            building.plot_area = float(item.get('buldPlotAr', 0.0))
+            building.lawd_cd = item.get('ldCode', '')
+            building.jibun = item.get('mnnmSlno', '')
+            jibun = building.jibun.split('-')
+            building.bonbun = int(jibun[0])
+            if 1 < len(jibun):
+                building.bubun = int(jibun[1])
+            building.plot_area = float(item.get('buldPlotAr', 0))
+            building.building_total_area = float(item.get('buldTotar',  0))
+            building.main_purpose_cd = item.get('mainPrposCode', '')
+            building.main_purpose = item.get('mainPrposCodeNm', '')
+            building.detail_purpose_cd = item.get('detailPrposCode', '')
+            building.detail_purpose = item.get('detailPrposCodeNm', '')
+            building.building_purpose = item.get('buldPrposClCodeNm', '')
+            building.use_date = item.get('useConfmDe', '')
             result.append(building)
 
         return result
@@ -53,4 +72,4 @@ class BuildingInfo(Nsdi):
 
 if __name__ == "__main__":
     print(BuildingInfo.search('4833025324', 0, 508, 14))
-    print(BuildingInfo.search('4833025324', 0, '508', ''))
+    print(len(BuildingInfo.search('4833025324', 0, '2***', '')))

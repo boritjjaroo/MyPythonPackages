@@ -18,7 +18,7 @@ class HousePrice:
         return str
 
     @staticmethod
-    def search(lawd_cd, is_san, bonbun, bubun, year):
+    def search(lawd_cd, is_san, bonbun, bubun, year=None):
         result = []
 
         url = f'http://openapi.nsdi.go.kr/nsdi/IndvdHousingPriceService/attr/getIndvdHousingPriceAttr'

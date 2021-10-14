@@ -2,6 +2,19 @@ import requests
 import json
 
 class Nsdi:
+    headers = {
+        #Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+        #Accept-Encoding: gzip, deflate
+        #Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+        #Cache-Control: max-age=0
+        #Connection: keep-alive
+        'Cookie': 'JSESSIONID=0ACD417D9E66BDF16AF48EF68CF495BA; _TRK_CR=http%3A%2F%2Fwww.nsdi.go.kr%2F; _TRK_UID=29187586ae00bcc6f61f26617f40f268:2; _TRK_SID=fe000f88c42ea4548f03a7a8d3a8f0e1; _TRK_CQ=%3FsvcSe=S%26svcId=S027; _TRK_EX=17',
+        'Host': 'openapi.nsdi.go.kr',
+        'Referer': 'http://openapi.nsdi.go.kr/nsdi/eios/OperationSumryDetail.do',
+        #Upgrade-Insecure-Requests: 1
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36',
+    }
+
     def __init__(self):
         pass
     def __repr__(self):
@@ -44,18 +57,6 @@ class Nsdi:
     def search_(url, pnu, year=None, rows=None, page=None):
         result = []
 
-        headers = {
-            #Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
-            #Accept-Encoding: gzip, deflate
-            #Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
-            #Cache-Control: max-age=0
-            #Connection: keep-alive
-            'Cookie': 'JSESSIONID=0ACD417D9E66BDF16AF48EF68CF495BA; _TRK_CR=http%3A%2F%2Fwww.nsdi.go.kr%2F; _TRK_UID=29187586ae00bcc6f61f26617f40f268:2; _TRK_SID=fe000f88c42ea4548f03a7a8d3a8f0e1; _TRK_CQ=%3FsvcSe=S%26svcId=S027; _TRK_EX=17',
-            'Host': 'openapi.nsdi.go.kr',
-            'Referer': 'http://openapi.nsdi.go.kr/nsdi/eios/OperationSumryDetail.do',
-            #Upgrade-Insecure-Requests: 1
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36',
-        }
         params = {
             # cookie를 이용해 인증키 우회
             #'authkey': '',
@@ -72,7 +73,7 @@ class Nsdi:
         if page:
             params['pageNo'] = f'{page}'
 
-        response = requests.get(url, params=params, headers=headers)
+        response = requests.get(url, params=params, headers=Nsdi.headers)
         if response.status_code != 200 :
             print(url)
             print(f'Http error : {response.status_code}')

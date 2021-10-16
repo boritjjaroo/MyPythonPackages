@@ -72,7 +72,7 @@ class LawdCD:
 
 if __name__ == "__main__":
     # 시도
-    print(LawdCD.search())
+    print(LawdCD.search(''))
     # 경상남도
     print(LawdCD.search('48'))
     # 경상남도 양산시

@@ -83,5 +83,7 @@ class AptListLawdCD(AptList):
 
 if __name__ == "__main__":
     print(AptListLawdCD.search('4128112800'))
+    # 하위 행정구역(리)이 있을 경우 검색 안됨
     print(AptListLawdCD.search('4833025300'))
-    print(AptListSiGunGu.search('4833025300'))
+    # 경상남도 양산시 물금읍 물금리
+    print(AptListSiGunGu.search('4833025321'))

@@ -29,7 +29,7 @@ class Nsdi:
         return val
 
     @staticmethod
-    def pnu(lawd_cd, is_san, bonbun, bubun):
+    def get_pnu(lawd_cd, is_san, bonbun, bubun):
         if is_san:
             is_san_cd = 2
         else:
@@ -51,7 +51,7 @@ class Nsdi:
 
     @staticmethod
     def search(url, lawd_cd, is_san, bonbun, bubun, year=None, rows=None, page=None):
-        return Nsdi.search_(url, Nsdi.pnu(lawd_cd, is_san, bonbun, bubun), year, rows, page)
+        return Nsdi.search_(url, Nsdi.get_pnu(lawd_cd, is_san, bonbun, bubun), year, rows, page)
 
     @staticmethod
     def search_(url, pnu, year=None, rows=None, page=None):
@@ -87,7 +87,7 @@ class Nsdi:
 
         
 if __name__ == "__main__":
-    print(Nsdi.pnu('4833025324', 0, 508, 14))
-    print(Nsdi.pnu('4833025324', 0, '508', ''))
-    print(Nsdi.pnu('4833025324', 0, '5**', ''))
-    print(Nsdi.pnu('4833025324', 0, '508', '1*'))
+    print(Nsdi.get_pnu('4833025324', 0, 508, 14))
+    print(Nsdi.get_pnu('4833025324', 0, '508', ''))
+    print(Nsdi.get_pnu('4833025324', 0, '5**', ''))
+    print(Nsdi.get_pnu('4833025324', 0, '508', '1*'))

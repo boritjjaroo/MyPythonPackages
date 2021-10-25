@@ -32,15 +32,26 @@ class BldRgs:
 
     @staticmethod
     def search(service_name, lawd_cd, is_san, bonbun=None, bubun=None, dong=None, ho=None, rows=None, page=None):
+
+        if not lawd_cd or len(lawd_cd) != 10:
+            return None
+
         url = BldRgs.service_url + service_name
         params = BldRgs.params
+
         params['sigunguCd'] = lawd_cd[0:5]
         params['bjdongCd'] = lawd_cd[5:10]
         params['platGbCd'] = f'{is_san}'
         if bonbun:
-            params['bun'] = f'{bonbun:04}'
+            if isinstance(bonbun, str) and bonbun.isdigit():
+                params['bun'] = f'{bonbun:0>04}'
+            else:
+                params['bun'] = f'{bonbun:04}'
         if bubun:
-            params['ji'] = f'{bubun:04}'
+            if isinstance(bubun, str) and bubun.isdigit():
+                params['ji'] = f'{bubun:0>04}'
+            else:
+                params['ji'] = f'{bubun:04}'
         if dong:
             params['dongNm'] = dong
         if ho:
@@ -69,10 +80,25 @@ class BldRgsTitle(BldRgs):
     service_name = 'getBrTitleInfo'
 
     def __init__(self):
-        pass
+        self.pnu = ''
+        self.lawd_cd = ''
+        self.bonbun = 0
+        self.bubun = 0
+        self.address = ''
+        self.plot_area = 0.0
+        self.building_total_area = 0.0
+        self.building_area = 0.0
+        self.use_approve_date = ''
+        self.structure = ''
+        self.structure_etc = ''
+        self.main_purpose = ''
+        self.detail_purpose = ''
+        self.height = 0.0
+        self.ground_floor = 0
+        self.under_floor = 0
 
     def __repr__(self):
-        str = f''
+        str = f'{self.address}'
         return str
 
     @staticmethod
@@ -82,7 +108,32 @@ class BldRgsTitle(BldRgs):
         root = BldRgs.search(BldRgsTitle.service_name, lawd_cd, is_san, bonbun, bubun)
 
         for item in root.iter('item'):
-            print(item.findtext('platPlc'))
+            building = BldRgsTitle()
+
+            sigungu = item.findtext('sigunguCd', '00000')
+            eupmyundong = item.findtext('bjdongCd', '00000')
+            san = int(item.findtext('platGbCd', '0'))
+            bun = int(item.findtext('bun', '0'))
+            ji = int(item.findtext('ji', '0'))
+            building.pnu = f'{sigungu}{eupmyundong}{san+1}{bun:04}{ji:04}'
+            building.lawd_cd = sigungu + eupmyundong
+            building.bonbun = bun
+            building.bubun = ji
+
+            building.address = item.findtext('platPlc', '')
+            building.plot_area = float(item.findtext('platArea', '0.0'))
+            building.building_total_area = float(item.findtext('totArea', '0.0'))
+            building.building_area = float(item.findtext('archArea', '0.0'))
+            building.use_approve_date = item.findtext('useAprDay', '19000101')
+            building.use_approve_date = f'{building.use_approve_date[0:4]}-{building.use_approve_date[4:6]}-{building.use_approve_date[6:8]}'
+            building.structure = item.findtext('strctCdNm', '')
+            building.structure_etc = item.findtext('etcStrct', '')
+            building.main_purpose = item.findtext('mainPurpsCdNm', '')
+            building.detail_purpose = item.findtext('etcPurps', '')
+            building.height = float(item.findtext('heit', '0.0'))
+            building.ground_floor = int(item.findtext('grndFlrCnt', '0'))
+            building.under_floor = int(item.findtext('ugrndFlrCnt', '0'))
+            result.append(building)
         
         return result
 

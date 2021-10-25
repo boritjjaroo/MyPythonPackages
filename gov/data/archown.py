@@ -25,6 +25,7 @@ class ArchOwn:
 
     def __init__(self):
         self.owner = ''
+        self.quota = ''
         self.change_date = ''
         pass
 
@@ -43,7 +44,7 @@ class ArchOwn:
         params['plat_gb_cd'] = f'{is_san}'
         if bonbun:
             params['bun'] = f'{bonbun:04}'
-        if bubun:
+        if bubun and bubun != 0:
             params['ji'] = f'{bubun:04}'
         if dong:
             params['dong_nm'] = dong
@@ -68,12 +69,14 @@ class ArchOwn:
 
         for item in root.iter('item'):
             arch_own = ArchOwn()
-            arch_own.owner = item.findtext('nm')
-            arch_own.change_date = item.findtext('chang_caus_day')
+            arch_own.owner = item.findtext('nm', '')
+            arch_own.quota = item.findtext('ownsh_quota', '')
+            change_date = item.findtext('chang_caus_day', '00000000')
+            arch_own.change_date = f'{change_date[0:4]}-{change_date[4:6]}-{change_date[6:8]}'
             result.append(arch_own)
         
         return result
 
 
 if __name__ == "__main__":
-    print(ArchOwn.search('4833025324', 0, 538))
+    print(ArchOwn.search('4833025324', 0, 835))
